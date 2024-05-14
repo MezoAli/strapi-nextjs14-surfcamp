@@ -12,6 +12,15 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "hero-image": "url('/public/hero-image.png')",
+      },
+      colors: {
+        turquoise: "#14a998",
+        lightBeige: "#fffbf4",
+        lightBrown: "#f1e8d9",
+        brown: "#d7c094",
+        orange: "#ce822f",
+        beige: "#d7c094",
       },
     },
   },
