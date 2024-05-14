@@ -31,3 +31,8 @@ body {
     text-wrap: balance;
   }
 }
+
+.custom_logo_white {
+  filter: invert(81%) sepia(53%) saturate(0%) hue-rotate(226deg)
+    brightness(114%) contrast(100%);
+}
