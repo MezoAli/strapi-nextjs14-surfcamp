@@ -4,7 +4,7 @@ import FooterLinks from "./FooterLinks";
 import FooterPolicyLinks from "./FooterPolicyLinks";
 const Footer = () => {
   return (
-    <footer className="bg-black py-8 px-10 text-white flex flex-col gap-8">
+    <footer className="bg-black py-8 px-10 text-white flex flex-col gap-8 mt-16">
       <div className="flex justify-between items-center">
         <Image
           src={Logo}

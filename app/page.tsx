@@ -1,11 +1,12 @@
+import InfoBlock from "@/components/InfoBlock";
 import HeroSection from "../components/HeroSection";
 
 export default function Home() {
   return (
-    <main className="h-screen">
-      <div>
-        <HeroSection />
-      </div>
+    <main>
+      <HeroSection heading="" imageSrc="" logoColorClass="" />
+      <InfoBlock />
+      <InfoBlock reversed headline="test" />
     </main>
   );
 }

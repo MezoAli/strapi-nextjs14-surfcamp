@@ -1,5 +1,5 @@
 const Blog = () => {
-  return <div>Blog</div>;
+  return <div className="pt-[8.5rem]">Blog</div>;
 };
 
 export default Blog;

@@ -4,7 +4,7 @@ import NavLinks from "./NavLinks";
 import Link from "next/link";
 const Header = () => {
   return (
-    <nav className="flex top-0 left-0 justify-between items-center py-6 w-full absolute z-10">
+    <nav className="flex mb-[3.5rem] top-0 left-0 justify-between items-center py-6 w-full absolute z-10 px-8">
       <Image src={Logo} alt="logo" className="w-[50px] h-[77px] ml-10" />
       <NavLinks />
       <div className="mr-10">

@@ -3,15 +3,15 @@ import Link from "next/link";
 const LINKS = [
   {
     label: "imprint",
-    href: "/",
+    href: "/imprint",
   },
   {
     label: "terms and conditions",
-    href: "/experience",
+    href: "/terms-conditions",
   },
   {
     label: "data protection",
-    href: "/blog",
+    href: "/data-protection",
   },
 ];
 
