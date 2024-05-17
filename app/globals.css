@@ -12,6 +12,11 @@
     brightness(88%) contrast(81%);
 }
 
+.custom_logo_white {
+  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(131deg)
+    brightness(120%) contrast(118%);
+}
+
 .custom_border_radius-right {
   border-radius: 0 350px 350px 0;
 }

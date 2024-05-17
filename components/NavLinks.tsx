@@ -28,7 +28,7 @@ const NavLinks = () => {
             href={link.href}
             className={`text-xl capitalize hover:underline underline-offset-3 font-semibold ${
               pathname === link.href ? "underline" : undefined
-            }`}
+            } ${pathname === "/experience" ? "text-white" : undefined}`}
           >
             {link.label}
           </Link>
