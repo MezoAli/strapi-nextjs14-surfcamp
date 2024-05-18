@@ -18,6 +18,9 @@ const Experience = () => {
         imageSrc={Location}
         headline="the location"
         description="test"
+        showBtn={true}
+        btnBackground="orange"
+        btnText="BOOK NOW"
       />
       <InfoBlock
         imageSrc={Lodging}

@@ -1,29 +1,34 @@
 import Image from "next/image";
-import ExperienceImage from "../public/experience.png";
 
-type InfoBlockProps = {
+export type InfoBlockProps = {
+  id?: string | number;
   imageSrc: any;
   headline: string;
   description: string;
-  btnBackground: string;
-  reversed: boolean;
-  btnText: string;
+  btnBackground?: "turquoise" | "orange" | "beige";
+  reversed?: boolean;
+  btnText?: string;
+  showBtn?: boolean;
 };
 
 const InfoBlock = ({
   btnBackground = "beige",
-  btnText,
+  btnText = "BOOK NOW",
   description,
   headline,
   imageSrc,
   reversed = false,
+  showBtn = false,
 }: InfoBlockProps) => {
+  const baseUrl = process.env.BASE_URL as any;
   return (
     <div className={`flex my-6 ${reversed ? "flex-row-reverse" : ""} gap-10`}>
       <div className="w-[50%]">
         <Image
-          src={imageSrc || ExperienceImage}
+          src={`${baseUrl}${imageSrc}`}
           alt="logo"
+          width={600}
+          height={600}
           className={`w-[680px] h-[680px] ${
             reversed
               ? "custom_border_radius-left"
@@ -36,11 +41,19 @@ const InfoBlock = ({
           {headline || "the experience."}
         </h2>
         <p className="text-lg leading-loose">{description || "lorem20"}</p>
-        <button
-          className={`px-6 py-3 bg-${btnBackground} text-white font-bold rounded-3xl w-fit`}
-        >
-          {btnText || "BOOK NOW"}
-        </button>
+        {showBtn ? (
+          <button
+            className={`px-6 py-3 ${
+              btnBackground === "turquoise" ? "btn_turquoise" : undefined
+            } ${btnBackground === "beige" ? "btn_beige" : undefined} ${
+              btnBackground === "orange" ? "btn_orange" : undefined
+            } text-white font-bold rounded-3xl w-fit`}
+          >
+            {btnText}
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
