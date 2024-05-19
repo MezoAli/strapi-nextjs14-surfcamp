@@ -1,25 +1,26 @@
 import Image from "next/image";
 import BlogImage from "../public/playground.png";
+import Link from "next/link";
+import { ArticleType } from "./SingleArticle";
 
-const HighlightArticle = () => {
+const HighlightArticle = ({ article }: { article: ArticleType }) => {
   return (
-    <div className="flex justify-center items-center gap-8 px-6 my-10">
+    <article className="flex justify-center items-center gap-8 px-6 my-10">
       <div className="flex flex-col gap-6 justify-start items-start">
-        <h2 className="text-6xl font-bold">3 tips for a super fast takeoff</h2>
-        <p>
-          Improving your take-off phase in surfing is a fundamental step toward
-          riding waves with more confidence and style. Improving your take-off
-          phase is a gradual process, and it may take time to master. Be
-          patient, stay committed to practice, and enjoy the journey of becoming
-          a better surfer. With dedication and persistence, you'll see progress
-          and have more enjoyable rides. Here is how:
-        </p>
+        <h2 className="text-6xl font-bold">{article.headline}</h2>
+        <p>{article.excerpt}</p>
         <button className="px-6 py-4 text-white font-semibold rounded-3xl bg-turquoise capitalize">
-          read more
+          <Link href={`/blog/${article.slug}`}>read more</Link>
         </button>
       </div>
-      <Image src={BlogImage} alt="blog-image" className="w-[50%] rounded-lg" />
-    </div>
+      <Image
+        src={`${process.env.BASE_URL}${article.featuredImage}` || BlogImage}
+        alt="blog-image"
+        className="w-[50%] rounded-2xl"
+        width={600}
+        height={600}
+      />
+    </article>
   );
 };
 
