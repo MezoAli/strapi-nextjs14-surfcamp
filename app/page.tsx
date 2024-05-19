@@ -1,6 +1,7 @@
 import InfoBlock, { InfoBlockProps } from "@/components/InfoBlock";
 import HeroSection from "../components/HeroSection";
 import axios from "axios";
+import { transformData } from "@/utils/strapi.utils";
 
 export default async function Home() {
   const response = await axios.get(
@@ -9,25 +10,7 @@ export default async function Home() {
 
   const dataArray = response.data.data.attributes.info_blocks.data;
 
-  const infoBlocksData: InfoBlockProps[] = dataArray.map((item: any) => {
-    return {
-      id: item.id,
-      headline: item.attributes.headline,
-      description: item.attributes.description
-        .map((paragraph: { children: any[] }) =>
-          paragraph.children.map((child) => child.text).join("")
-        )
-        .filter((text: string) => text.trim() !== "")
-        .join(""),
-      reversed: item.attributes.reversed,
-      imageSrc: item.attributes.imageSrc.data.attributes.url,
-      showBtn: item.attributes.showBtn,
-      btnText: item.attributes?.button.btnText,
-      btnBackground: item.attributes?.button?.btnBackground,
-    };
-  });
-
-  console.log(infoBlocksData);
+  const infoBlocksData = transformData(dataArray);
 
   return (
     <main>
