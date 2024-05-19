@@ -1,7 +1,9 @@
-import InfoBlock, { InfoBlockProps } from "@/components/InfoBlock";
+import InfoBlock from "@/components/InfoBlock";
 import HeroSection from "../components/HeroSection";
 import axios from "axios";
 import { transformData } from "@/utils/strapi.utils";
+
+export const revalidate = 300;
 
 export default async function Home() {
   const response = await axios.get(

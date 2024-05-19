@@ -3,6 +3,9 @@ import ExperienceImage from "../../public/experience.png";
 import InfoBlock from "@/components/InfoBlock";
 import axios from "axios";
 import { transformData } from "@/utils/strapi.utils";
+
+export const revalidate = 300;
+
 const Experience = async () => {
   const response = await axios.get(
     "http://localhost:1337/api/infoblocks-experience?populate=deep"

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Markdown from "react-markdown";
 
 export type InfoBlockProps = {
   id?: string | number;
@@ -40,7 +41,7 @@ const InfoBlock = ({
         <h2 className="text-4xl font-bold capitalize">
           {headline || "the experience."}
         </h2>
-        <p className="text-lg leading-loose">{description || "lorem20"}</p>
+        <Markdown>{description}</Markdown>
         {showBtn ? (
           <button
             className={`px-6 py-3 ${
