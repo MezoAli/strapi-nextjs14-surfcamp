@@ -29,6 +29,8 @@ export const transformBlogData = (dataArray: any) => {
       id: item.id,
       headline: item.attributes.headline,
       author: item.attributes.author,
+      slug: item.attributes.slug,
+      publishedAt: item.attributes.publishedAt,
       excerpt: item.attributes.excerpt,
       isHighlitedArticle: item.attributes.isHighlitedArticle,
       featuredImage: item.attributes.featuredImage.data[0].attributes.url,

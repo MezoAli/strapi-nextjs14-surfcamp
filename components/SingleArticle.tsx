@@ -10,8 +10,11 @@ export type ArticleType = {
   author: string;
   featuredImage: any;
   isHighlitedArticle: boolean;
+  publishedAt: string;
 };
 const SingleArticle = ({ article }: { article: ArticleType }) => {
+  console.log(article);
+
   return (
     <Link href={`/blog/${article.slug}`}>
       <div className="flex flex-col">
@@ -24,7 +27,10 @@ const SingleArticle = ({ article }: { article: ArticleType }) => {
         />
         <div className="flex flex-col gap-4 bg-lightBrown p-4 rounded-lg">
           <p className="text-lg font-semibold">{article.headline}</p>
-          <time>Monday, June 05, 2023</time>
+          <time>
+            {new Date(article.publishedAt).toLocaleDateString()} -{" "}
+            {new Date(article.publishedAt).toLocaleTimeString()}
+          </time>
         </div>
       </div>
     </Link>
