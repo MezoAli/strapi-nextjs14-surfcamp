@@ -28,12 +28,13 @@ export const transformBlogData = (dataArray: any) => {
     return {
       id: item.id,
       headline: item.attributes.headline,
+      headlineColor: item.attributes.headlineColor,
       author: item.attributes.author,
       slug: item.attributes.slug,
       publishedAt: item.attributes.publishedAt,
       excerpt: item.attributes.excerpt,
       isHighlitedArticle: item.attributes.isHighlitedArticle,
-      featuredImage: item.attributes.featuredImage.data[0].attributes.url,
+      featuredImage: `${process.env.BASE_URL}${item.attributes.featuredImage.data[0].attributes.url}`,
     };
   });
 

@@ -25,14 +25,16 @@ const HeroSection = ({
         <Image
           src={imageSrc || HeroImage}
           alt="hero-image"
+          width={600}
+          height={600}
           className="w-full max-h-screen custom_border_radius-bottom"
         />
       </div>
 
       <h2
-        className={`ml-[3rem] text-4xl text-${headingColor} md:text-7xl mb-[5rem] max-w-[300px]`}
+        className={`ml-[3rem] max-h-[240px] text-4xl text-${headingColor} md:text-7xl mb-[5rem] max-w-sm`}
       >
-        {heading || "barrel. your. happiness."}
+        {(heading || "barrel. your. happiness.").substring(0, 29)}...
       </h2>
       <button
         className={`px-6 absolute ml-[3rem] py-3 bg-${btnColor} text-white font-bold rounded-3xl`}

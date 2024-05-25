@@ -14,7 +14,7 @@ const HighlightArticle = ({ article }: { article: ArticleType }) => {
         </button>
       </div>
       <Image
-        src={`${process.env.BASE_URL}${article.featuredImage}` || BlogImage}
+        src={article.featuredImage}
         alt="blog-image"
         className="w-[50%] rounded-2xl"
         width={600}

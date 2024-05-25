@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Test from "../public/lesson.png";
 import Link from "next/link";
 
 export type ArticleType = {
@@ -11,6 +10,7 @@ export type ArticleType = {
   featuredImage: any;
   isHighlitedArticle: boolean;
   publishedAt: string;
+  headlineColor?: string;
 };
 const SingleArticle = ({ article }: { article: ArticleType }) => {
   console.log(article);
@@ -19,7 +19,7 @@ const SingleArticle = ({ article }: { article: ArticleType }) => {
     <Link href={`/blog/${article.slug}`}>
       <div className="flex flex-col">
         <Image
-          src={`${process.env.BASE_URL}${article.featuredImage}`}
+          src={article.featuredImage}
           alt="test-image"
           className="rounded-lg"
           width={600}
