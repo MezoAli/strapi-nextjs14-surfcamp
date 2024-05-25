@@ -1,4 +1,5 @@
 import BlogArticleHeadline from "./BlogArticleHeadline";
+import BlogArticleParagraph from "./BlogArticleParagraph";
 import BlogArticleParagraphWithImage from "./BlogArticleParagraphWithImage";
 
 const ArticleContents = ({ atricleData }: any) => {
@@ -22,7 +23,11 @@ const ArticleContents = ({ atricleData }: any) => {
           );
         }
         if (content.__component === "blog-article.paragraph") {
-          return <div key={content.id}>{content.paragraph}</div>;
+          return (
+            <div key={content.id}>
+              <BlogArticleParagraph content={content} />
+            </div>
+          );
         }
         if (content.__component === "blog-article.landscape-image") {
           return <div key={content.id}>{content.imageCaption}</div>;
