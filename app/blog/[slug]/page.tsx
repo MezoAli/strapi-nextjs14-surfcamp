@@ -1,4 +1,6 @@
+import ArticleContents from "@/components/ArticleContents";
 import ArticleIntro from "@/components/ArticleIntro";
+import ArticleOverview from "@/components/ArticleOverview";
 import HeroSection from "@/components/HeroSection";
 import { transformBlogData } from "@/utils/strapi.utils";
 import axios from "axios";
@@ -31,6 +33,8 @@ const SingleBlogDetails = async ({ params }: { params: { slug: string } }) => {
         publishedAt={blogData.publishedAt}
         headlineColor={blogData.headlineColor}
       />
+      <ArticleOverview atricleData={atricleData.attributes} />
+      <ArticleContents atricleData={atricleData.attributes} />
     </div>
   );
 };
