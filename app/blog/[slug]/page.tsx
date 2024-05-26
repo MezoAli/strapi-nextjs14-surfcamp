@@ -1,7 +1,7 @@
 import ArticleContents from "@/components/ArticleContents";
 import ArticleIntro from "@/components/ArticleIntro";
 import ArticleOverview from "@/components/ArticleOverview";
-import HeroSection from "@/components/HeroSection";
+import FeaturedAricles from "@/components/FeaturedAricles";
 import { transformBlogData } from "@/utils/strapi.utils";
 import axios from "axios";
 import { redirect } from "next/navigation";
@@ -15,6 +15,8 @@ const SingleBlogDetails = async ({ params }: { params: { slug: string } }) => {
   const blogsData = transformBlogData(response.data.data);
 
   const blogData = blogsData.find((item) => item.slug === params.slug);
+
+  const otherBlogsData = blogsData.filter((item) => item.slug !== params.slug);
 
   if (!blogData) {
     redirect("/");
@@ -35,6 +37,7 @@ const SingleBlogDetails = async ({ params }: { params: { slug: string } }) => {
       />
       <ArticleOverview atricleData={atricleData.attributes} />
       <ArticleContents atricleData={atricleData.attributes} />
+      <FeaturedAricles articles={otherBlogsData} />
     </div>
   );
 };

@@ -16,12 +16,15 @@ const SingleArticle = ({ article }: { article: ArticleType }) => {
   console.log(article);
 
   return (
-    <Link href={`/blog/${article.slug}`}>
-      <div className="flex flex-col">
+    <Link
+      href={`/blog/${article.slug}`}
+      className="flex flex-col h-full flex-grow"
+    >
+      <div className="flex flex-col h-full">
         <Image
           src={article.featuredImage}
           alt="test-image"
-          className="rounded-lg"
+          className="rounded-lg h-full"
           width={600}
           height={600}
         />

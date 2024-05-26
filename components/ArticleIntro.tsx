@@ -32,11 +32,11 @@ const ArticleIntro = ({
       >
         {heading.substring(0, 40)}
       </h2>
-      <time className="ml-[3rem] font-semibold text-lg">
+      <time className={`ml-[3rem] text-${headlineColor} font-semibold text-lg`}>
         {new Date(publishedAt).toLocaleDateString()} -{" "}
         {new Date(publishedAt).toLocaleTimeString()}
       </time>
-      <p className="ml-[3rem] font-bold">{author}</p>
+      <p className={`ml-[3rem] text-${headlineColor} font-bold`}>{author}</p>
     </section>
   );
 };

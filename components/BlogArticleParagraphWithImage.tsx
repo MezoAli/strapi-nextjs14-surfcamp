@@ -39,7 +39,7 @@ const BlogArticleParagraphWithImage = ({
       >
         <Image
           className="max-h-[600px] w-full"
-          alt={content.imageCaption}
+          alt={content.imageCaption || "image-caption"}
           src={`${process.env.BASE_URL}${content.imageSrc.data.attributes.url}`}
           width={600}
           height={600}
