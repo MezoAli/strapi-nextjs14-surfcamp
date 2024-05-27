@@ -1,7 +1,8 @@
 import InfoBlock from "@/components/InfoBlock";
 import HeroSection from "../components/HeroSection";
 import axios from "axios";
-import { transformData } from "@/utils/strapi.utils";
+import { transformBlogData, transformData } from "@/utils/strapi.utils";
+import HomeBlogSection from "@/components/HomeBlogSection";
 
 export const revalidate = 300;
 
@@ -10,9 +11,15 @@ export default async function Home() {
     "http://localhost:1337/api/infoblocks-landing?populate=deep"
   );
 
-  const dataArray = response.data.data.attributes.info_blocks.data;
+  const infoBlocks = response.data.data.attributes.info_blocks.data;
 
-  const infoBlocksData = transformData(dataArray);
+  const infoBlocksData = transformData(infoBlocks);
+
+  const blogResponse = await axios.get(
+    "http://localhost:1337/api/blog-articles?populate=deep"
+  );
+
+  const blogData = transformBlogData(blogResponse.data.data);
 
   return (
     <main>
@@ -31,6 +38,7 @@ export default async function Home() {
           />
         );
       })}
+      <HomeBlogSection blogData={blogData} />
     </main>
   );
 }
