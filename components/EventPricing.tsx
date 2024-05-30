@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 const EventPricing = () => {
   return (
@@ -16,4 +16,4 @@ const EventPricing = () => {
   );
 };
 
-export default EventPricing;
+export default memo(EventPricing);

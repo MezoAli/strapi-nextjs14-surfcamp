@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import EventPricing from "./EventPricing";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 const LoginRegisterForm = () => {
   const pathname = usePathname();
@@ -10,9 +10,14 @@ const LoginRegisterForm = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(firstName, lastName, email, phone);
+  };
   return (
     <>
-      <form className="flex flex-col gap-10">
+      <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
         <div className="flex justify-between items-center gap-5">
           <div className="flex flex-col gap-5 w-full">
             <label htmlFor="first-name">First Name</label>
@@ -58,7 +63,10 @@ const LoginRegisterForm = () => {
             className="rounded-xl p-5 bg-lightBrown"
           />
         </div>
-        <button className="px-6 py-4 bg-turquoise capitalize text-white text-xl rounded-full w-fit">
+        <button
+          type="submit"
+          className="px-6 py-4 bg-turquoise capitalize text-white text-xl rounded-full w-fit"
+        >
           {pathname === "/login" ? "stay in touch" : "Sign up"}
         </button>
       </form>
