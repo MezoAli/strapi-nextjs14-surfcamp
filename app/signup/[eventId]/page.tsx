@@ -1,3 +1,4 @@
+import EventDetailsIntro from "@/components/EventDetails";
 import EventsGrid from "@/components/EventsGrid";
 import LoginRegisterForm from "@/components/LoginRegisterForm";
 import axios from "axios";
@@ -11,17 +12,16 @@ const EventDetails = async ({ params }: { params: { eventId: number } }) => {
     return event.id === +params.eventId;
   });
 
-  // const singlePrice = eventDetails.attributes.singlePrice
-  // const sharedPrice = eventDetails.attributes.sharedPrice
-
   const otherEvents = response.data.data.filter(
     (event: any) => event.id !== +params.eventId
   );
 
   return (
     <>
-      <div className="mt-[12rem] px-10 flex justify-center items-center gap-10">
-        <div className="w-[50%]">{params.eventId}</div>
+      <div className="mt-[12rem] px-10 flex justify-center gap-10">
+        <div className="w-[50%]">
+          <EventDetailsIntro event={eventDetails.attributes} />
+        </div>
         <div className="w-[50%]">
           <LoginRegisterForm
             sharedPrice={eventDetails.attributes.sharedPrice}

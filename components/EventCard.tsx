@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface SurfCamp {
+export interface SurfCamp {
   name: string;
   description: string;
   startDate: string;
