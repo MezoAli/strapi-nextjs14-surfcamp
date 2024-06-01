@@ -1,9 +1,13 @@
 import EventsGrid from "@/components/EventsGrid";
 import LoginRegisterForm from "@/components/LoginRegisterForm";
 import SignupIntro from "@/components/SignupIntro";
+import axios from "axios";
 import React from "react";
 
-const RegisterPage = () => {
+const RegisterPage = async () => {
+  const response = await axios.get(
+    "http://localhost:1337/api/events?populate=deep"
+  );
   return (
     <>
       <div className="mt-[12rem] px-10 flex justify-center items-center gap-10">
@@ -14,7 +18,7 @@ const RegisterPage = () => {
           <LoginRegisterForm />
         </div>
       </div>
-      <EventsGrid />
+      <EventsGrid events={response.data.data} />
     </>
   );
 };

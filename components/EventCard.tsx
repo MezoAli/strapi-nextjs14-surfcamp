@@ -14,12 +14,9 @@ interface SurfCamp {
   imageSrc: any;
 }
 
-const EventCard = ({ event }: { event: SurfCamp }) => {
+const EventCard = ({ event, id }: { event: SurfCamp; id: number }) => {
   return (
-    <Link
-      href={`/blog/${event.name}`}
-      className="flex flex-col h-full flex-grow"
-    >
+    <Link href={`/signup/${id}`} className="flex flex-col h-full flex-grow">
       <div className="flex flex-col h-full">
         <Image
           src={`${process.env.BASE_URL}${event.imageSrc.data.attributes.url}`}

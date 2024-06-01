@@ -8,7 +8,7 @@ const Header = () => {
       <NavLinks />
       <div className="mr-10">
         <Link
-          href="/events"
+          href="/signup"
           className="px-5 py-3 bg-black text-white font-bold rounded-3xl hover:bg-black/65 transition duration-100"
         >
           BOOK NOW

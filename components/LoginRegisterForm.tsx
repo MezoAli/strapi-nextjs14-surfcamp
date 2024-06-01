@@ -3,8 +3,15 @@
 import { usePathname } from "next/navigation";
 import EventPricing from "./EventPricing";
 import { FormEvent, useState } from "react";
+import axios from "axios";
 
-const LoginRegisterForm = () => {
+const LoginRegisterForm = ({
+  singlePrice,
+  sharedPrice,
+}: {
+  singlePrice?: number;
+  sharedPrice?: number;
+}) => {
   const pathname = usePathname();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -13,7 +20,28 @@ const LoginRegisterForm = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(firstName, lastName, email, phone);
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/participants`,
+        {
+          data: {
+            email,
+            firstName,
+            lastName,
+            phone,
+          },
+        }
+      );
+
+      alert("sign up successful");
+    } catch (error: any) {
+      alert(error.response.data.error.message);
+    } finally {
+      setEmail("");
+      setFirstName("");
+      setLastName("");
+      setPhone("");
+    }
   };
   return (
     <>
@@ -58,6 +86,7 @@ const LoginRegisterForm = () => {
           <input
             id="phone"
             value={phone}
+            required
             onChange={(e) => setPhone(e.target.value)}
             type="text"
             className="rounded-xl p-5 bg-lightBrown"
@@ -67,10 +96,12 @@ const LoginRegisterForm = () => {
           type="submit"
           className="px-6 py-4 bg-turquoise capitalize text-white text-xl rounded-full w-fit"
         >
-          {pathname === "/login" ? "stay in touch" : "Sign up"}
+          {pathname === "/signup" ? "stay in touch" : "Sign up"}
         </button>
       </form>
-      {pathname === "/register" ? <EventPricing /> : undefined}
+      {pathname === "/signup" ? undefined : (
+        <EventPricing sharedPrice={sharedPrice} singlePrice={singlePrice} />
+      )}
     </>
   );
 };
