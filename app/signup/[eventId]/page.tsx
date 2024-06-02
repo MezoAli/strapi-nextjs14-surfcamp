@@ -26,6 +26,7 @@ const EventDetails = async ({ params }: { params: { eventId: number } }) => {
           <LoginRegisterForm
             sharedPrice={eventDetails.attributes.sharedPrice}
             singlePrice={eventDetails.attributes.singlePrice}
+            eventId={eventDetails.id}
           />
         </div>
       </div>

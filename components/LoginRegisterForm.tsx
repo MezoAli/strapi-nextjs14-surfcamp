@@ -8,9 +8,11 @@ import axios from "axios";
 const LoginRegisterForm = ({
   singlePrice,
   sharedPrice,
+  eventId,
 }: {
   singlePrice?: number;
   sharedPrice?: number;
+  eventId?: number;
 }) => {
   const pathname = usePathname();
   const [firstName, setFirstName] = useState("");
@@ -29,10 +31,10 @@ const LoginRegisterForm = ({
             firstName,
             lastName,
             phone,
+            event: eventId ? eventId : null,
           },
         }
       );
-
       alert("sign up successful");
     } catch (error: any) {
       alert(error.response.data.error.message);
